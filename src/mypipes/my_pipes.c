@@ -68,6 +68,9 @@ int main(int argc, char **argv)
 	my_str("\" from parent.\n");
       }
     }
+  } else {
+    my_str("ERROR. Invavlid Usage.\nUse: ./mypipes arg1 [arg2] [arg3] ...\n");
+    exit(0);
   }
 
   return 0;
