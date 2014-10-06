@@ -20,7 +20,7 @@ char *my_vect2str(char **v)
     for (i = 0, s2 = 0 ; v[i] != NULL ; i++) {
       s2 += my_strlen(v[i]);
       my_strcat(str, v[i]);
-      if (s2 != s) {
+      if (s2 != s - 1) {
 	str[s2] = ' ';
 	str[++s2] = '\0';
       }
