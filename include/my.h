@@ -73,6 +73,9 @@ char *my_strfind(char*, char);
 //Finds the first instance of the given char in the given string from right to left and returns a pointer to that char
 char *my_strrfind(char*, char);
 
+//Traverses a vector and returns a string contained all of the strings within separated by whitespaces.
+char *my_vect2str(char**);
+
 //Malloc with error checking
 void *xmalloc(unsigned int);
 
