@@ -76,6 +76,9 @@ char *my_strrfind(char*, char);
 //Traverses a vector and returns a string contained all of the strings within separated by whitespaces.
 char *my_vect2str(char**);
 
+//Takes a string and turns it into a vector using spaces as delimiters.
+char **my_str2vect(char*);
+
 //Malloc with error checking
 void *xmalloc(unsigned int);
 

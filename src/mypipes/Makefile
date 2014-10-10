@@ -1,6 +1,5 @@
 # Makefile for the pipes main
 NAME = pipes
-LIB = lib$(NAME)
 OBJ = $(SRC:.c=.o)
 RM = rm -fv
 
