@@ -28,25 +28,30 @@ char **my_str2vect(char *s)
       for (; s[i] == ' ' || s[i] == '\t' ; i++)
 	;
     }
-
+    
     v = xmalloc(l * sizeof(char*) + sizeof(char*));
     
     //Figure out the length of each word in the string and allocate the strings in the vector to match
-    for (i = 0, j = 0 ; i <= l ; i++) {	
+    for (i = 0, j = 0 ; i < l ; i++) {	
       for (strL = 0 ; s[j] != ' ' && s[j] != '\t' && s[j] != '\0' ; j++, strL++)
 	;
+
       v[i] = xmalloc(strL * sizeof(char) + sizeof(char));
+
       for (; s[j] == ' ' || s[j] == '\t' ; j++)
 	;
     }
+    
     v[i] = NULL;
 
     //Fill the vector with the words
-    for (i = 0, j = 0 ; i <= l ; i++) {
+    for (i = 0, j = 0 ; i < l ; i++) {
       for (k = 0 ; s[j] != ' ' && s[j] != '\t' && s[j] != '\0' ; j++, k++) {
 	v[i][k] = s[j];
       }
+
       v[i][k++] = '\0';
+
       for (; s[j] == ' ' || s[j] == '\t' ; j++) 
 	;
     }

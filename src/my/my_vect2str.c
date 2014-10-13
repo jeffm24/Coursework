@@ -21,8 +21,7 @@ char *my_vect2str(char **v)
       s2 += my_strlen(v[i]);
       my_strcat(str, v[i]);
       if (s2 < s - 1) {
-	str[s2++] = ' ';
-	//	str[++s2] = '\0';
+	my_strcat(str, " ");
       } 
     }
   }
