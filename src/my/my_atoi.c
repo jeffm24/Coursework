@@ -9,22 +9,26 @@
  */
 int my_atoi(char* s)
 {
-  int ret;
-  int sign;
+	int ret;
+	int sign;
 
-  for (; *s == ' ' ; s++)
-    ;
-  for (ret = 0, sign = 1 ; *s != '\0' ; s++) {
-    if (*s == ' ' || *s == '.')
-      break;
-    else if (*s == '-')
-      sign *= -1;
-    else if (*s >= '0' && *s <= '9') {
-      if (ret > 0)
-	ret *= 10;
-      ret += *s - '0';
-    }
-  }
+	ret = 0;
+	sign = 1;
+	if (s != NULL) {
+		for (; *s == ' ' ; s++)
+			;   
+		for (; *s != '\0' ; s++) {
+			if (*s != '+' && *s != '-' && (*s > '9' || *s < '0'))
+				break;
+			else if (*s == '-')
+				sign *= -1;
+			else if (*s >= '0' && *s <= '9') {
+				if (ret > 0)
+					ret *= 10;
+				ret += *s - '0';
+			}
+		}
+	}
 
-  return ret * sign;
+	return ret * sign;
 }

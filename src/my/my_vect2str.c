@@ -9,21 +9,19 @@
  */
 char *my_vect2str(char **v)
 {
-  unsigned int s, s2, i;
-  char *str = NULL;
-  
-  if (v != NULL && *v != NULL) {
-    for (s = 0, i = 0 ; v[i] != NULL ; s += (my_strlen(v[i]) + 1), i++)
-      ;
-    str = xmalloc(s);
-
-    for (i = 0, s2 = 0 ; v[i] != NULL ; i++) {
-      s2 += my_strlen(v[i]);
-      my_strcat(str, v[i]);
-      if (s2 < s - 1) {
-	my_strcat(str, " ");
-      } 
+	int i, slen, vlen;
+    char *str = NULL;
+    
+    if (v != NULL) {
+		for (vlen = 0, slen = 0; v[vlen] != NULL; vlen++)
+			slen += my_strlen(v[vlen]) + 1;
+            str = vlen > 0 ? (char *)xmalloc(slen) : NULL;
+            for (i = 0; i < vlen; i++) {
+				str = my_strcat(str, v[i]);
+                if (i < vlen - 1)
+					str = my_strcat(str, " ");
+			}
     }
-  }
-  return str;
+
+    return str;
 }
