@@ -82,4 +82,7 @@ char **my_str2vect(char*);
 //Malloc with error checking
 void *xmalloc(unsigned int);
 
+//Takes a string and parses it for an int (taking signs into account) and returns it.
+int my_atoi(char*);
+
 #endif
