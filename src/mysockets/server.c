@@ -55,6 +55,9 @@ int main(int argc, char** argv)
       exit(1);
     } 
     
+    my_str("\n----------------------------------------------------\n");
+    my_str("WELCOME TO THE SIMPLE CHAT SERVER");
+    my_str("\n----------------------------------------------------\n");
     my_str("\nServer accepting connections over port: ");
     my_int(port);
     my_str("\n\n");
