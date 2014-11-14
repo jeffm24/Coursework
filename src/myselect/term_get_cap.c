@@ -3,7 +3,8 @@
  * Author: Jeff Mariconda
  * Class: CS-392
  *
- * Pre: Takes a 
+ * Pre: Takes a char* cap.
+ * Post: Returns the termcap for that char* if possible. 
  */
 char *term_get_cap(char *cap)
 {

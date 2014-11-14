@@ -11,4 +11,5 @@ void doselect()
     gl_env.elements[gl_env.pos].mode = 1;
   else
     gl_env.elements[gl_env.pos].mode = 0;
+  refreshin();
 }

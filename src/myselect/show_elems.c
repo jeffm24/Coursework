@@ -9,12 +9,14 @@ void show_elems()
 {
   int x, y, i;
   int rowWidth;
+  int currPos;
 
   if (gl_env.elements != NULL) {
     ioctl(0, TIOCGWINSZ, &gl_env.win);
+    currPos = gl_env.pos;
     gl_env.flag = 0;
     term_clear();
-
+    
     for (i = 0, x = 0, y = 0, rowWidth = 0; i < gl_env.nbelems ; i++, y++) {
       if (y >= gl_env.win.ws_row) {
 	y = 0;
@@ -35,10 +37,10 @@ void show_elems()
       gl_env.elements[i].x = x;
       gl_env.elements[i].y = y;
       
-      if (i != gl_env.pos)
-	refreshout(i);
-      else
-	refreshin();
+      refreshout(i);
     }
+
+    term_move_to_item(currPos);
+    refreshin();
   }
 }

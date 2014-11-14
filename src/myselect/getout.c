@@ -15,7 +15,7 @@ void getout(char c)
   if (c) {
     //enter
     restore_terminal();
-    my_str("\n");
+
     for (i = 0 ; i < gl_env.nbelems ; i++) {
       if (gl_env.elements[i].mode) {
 	my_str(gl_env.elements[i].elem);

@@ -3,8 +3,7 @@
  * Author: Jeff Mariconda
  * Class: CS-392
  *
- * Moves the cursor down. If it is at the last elem in the column, loops it to the top
- * of the column to the right.
+ * Moves the cursor down (to the next element in sequence).
  */
 void movedown() 
 {
