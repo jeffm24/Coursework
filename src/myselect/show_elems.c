@@ -11,12 +11,12 @@ void show_elems()
   int rowWidth;
 
   if (gl_env.elements != NULL) {
-    i = 0;
+    ioctl(0, TIOCGWINSZ, &gl_env.win);
     gl_env.flag = 0;
     term_clear();
 
     for (i = 0, x = 0, y = 0, rowWidth = 0; i < gl_env.nbelems ; i++, y++) {
-      if (y >= gl_env.win.win_row) {
+      if (y >= gl_env.win.ws_row) {
 	y = 0;
 	x += rowWidth + 4;
 	rowWidth = 0;
@@ -31,12 +31,13 @@ void show_elems()
 	gl_env.flag = 1;
 	break;
       }
-
+      
       gl_env.elements[i].x = x;
       gl_env.elements[i].y = y;
-      refreshout(i);
-
-      if(!gl_env.flag)
+      
+      if (i != gl_env.pos)
+	refreshout(i);
+      else
 	refreshin();
     }
   }

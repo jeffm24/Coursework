@@ -1,4 +1,4 @@
-#include "myselect.h";
+#include "myselect.h"
 /*
  * Author: Jeff Mariconda
  * Class: CS-392

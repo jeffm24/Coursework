@@ -12,7 +12,7 @@ void refreshin()
   if (gl_env.elements[gl_env.pos].mode) 
     term_standout();
 
-  my_str(gl_env.elements[gl_env.pos].name);
+  my_str(gl_env.elements[gl_env.pos].elem);
  
   term_standend();
   term_underend();

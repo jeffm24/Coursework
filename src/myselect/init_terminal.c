@@ -9,7 +9,6 @@
 void init_terminal()
 {
   struct termio line;
-  char buf[READMIN + 5];
   char *name;
   int fd;
   
@@ -18,7 +17,7 @@ void init_terminal()
   ioctl(0, TCGETA, &line);
     
   //set input mode to non-canonical
-  line.cl_flags &= ~(ICANNON | ECHO | ISIG);
+  line.c_lflag &= ~(ICANON | ECHO | ISIG);
   line.c_cc[VMIN] = READMIN;
   line.c_cc[VTIME] = READTIME;
   ioctl(0, TCSETA, &line);
