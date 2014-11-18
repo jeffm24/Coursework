@@ -1,5 +1,5 @@
 #define _SERVER_H_
-#include "mysockets.h"
+#include "mygtksockets.h"
 /*
  * Author: Jeff Mariconda
  * Class: CS-392
@@ -7,7 +7,7 @@
  * Client program for the basic IRC application.
  */
 
-//Prints goodbye message and ends the client on SIGINT.
+//Prints goodbye message and ends the client on SIGINT or SIGALRM.
 void client_bye(int sig)
 {
   int m;
@@ -31,7 +31,55 @@ int main(int argc, char **argv)
   struct hostent *server;
   int port, n;
   char *buff, *usr, *temp, **v;
+
+  GtkWidget *win;
+  GtkWidget *mainTab;
+  GtkWidget *label;
+  GtkWidget *text;
+  GtkWidget *send_btn, *cnct_btn, *quit_btn;
+
+  gtk_init(&argc, &argv);
   
+  win = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+  g_signal_connect(G_OBJECT(win), "delete_event", G_CALLBACK(delete_cb), NULL);
+  g_signal_connect(G_OBJECT(win), "destroy", G_CALLBACK(destroy_cb), NULL);
+  gtk_container_set_border_width(GTK_CONTAINER(win), 10);
+  gtk_window_set_title(GTK_WINDOW(win), "Simple Chat Client");
+
+  mainTab = gtk_table_new(3, 6, FALSE);
+  gtk_container_add(GTK_CONTAINER(win), mainTab);
+  gtk_table_set_row_spacings((GtkTable*)mainTab, 5);
+  gtk_table_set_col_spacings((GtkTable*)mainTab, 5);
+
+  label = gtk_label_new("Message:");
+  gtk_table_attach_defaults((GtkTable*)mainTab, label, 0, 2, 0, 1);
+  gtk_widget_show(label);
+  
+  text = gtk_text_view_new();
+  gtk_table_attach_defaults((GtkTable*)mainTab, text, 0, 4, 1, 2);
+  gtk_widget_show(text);
+
+  send_btn = gtk_button_new_with_label("Send");
+  g_signal_connect(G_OBJECT(send_btn), "clicked", G_CALLBACK(sendclick_cb), NULL);
+  gtk_table_attach_defaults((GtkTable*)mainTab, send_btn, 4, 6, 1, 2);
+  gtk_widget_show(send_btn);
+
+  cnct_btn = gtk_toggle_button_new_with_label("Connect");
+  g_signal_connect(G_OBJECT(cnct_btn), "clicked", G_CALLBACK(connectclick_cb), NULL);
+  gtk_table_attach_defaults((GtkTable*)mainTab, cnct_btn, 1, 3, 2, 3);
+  gtk_widget_show(cnct_btn);
+
+  quit_btn = gtk_button_new_with_label("Quit");
+  g_signal_connect(G_OBJECT(quit_btn), "clicked", G_CALLBACK(quitclick_cb), NULL);
+  gtk_table_attach_defaults((GtkTable*)mainTab, quit_btn, 3, 5, 2, 3);
+  gtk_widget_show(quit_btn);
+
+  gtk_widget_show(mainTab);
+  gtk_widget_show(win);
+
+  gtk_main();
+  
+  /*
   if (argv != NULL && *argv != NULL && argc == 3) {
     signal(SIGINT, client_bye);
     signal(SIGALRM, client_bye);
@@ -166,5 +214,6 @@ int main(int argc, char **argv)
   free(buff);
   free(usr);
   my_freevect(v);
+  */
   return 0;
 }

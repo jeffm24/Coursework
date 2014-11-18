@@ -1,5 +1,5 @@
 #define _CLIENT_H_
-#include "mysockets.h"
+#include "mygtksockets.h"
 /*
  * Author: Jeff Mariconda
  * Class: CS-392
