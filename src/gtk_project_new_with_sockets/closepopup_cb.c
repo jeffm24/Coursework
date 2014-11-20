@@ -12,6 +12,7 @@ gint closepopup_cb(GtkWidget *w, gpointer data)
     
     //check if the closepopup callback came from the Connect window
     if (data == (gpointer)1) {  
+      g_signal_handler_block(gldata.cinst, gldata.cid);
       gtk_toggle_button_set_active((GtkToggleButton*)gldata.cinst, FALSE);
       g_signal_handler_unblock(gldata.cinst, gldata.cid);
     } 

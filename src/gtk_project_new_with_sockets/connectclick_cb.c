@@ -23,7 +23,6 @@ void connectclick_cb(GtkWidget *w, gpointer data)
     gtk_widget_set_sensitive((GtkWidget*)gldata.cinst, FALSE);
     gtk_widget_set_sensitive((GtkWidget*)gldata.qinst, FALSE);
     gtk_widget_set_sensitive((GtkWidget*)gldata.sinst, FALSE);
-    g_signal_handler_block(gldata.cinst, gldata.cid);
 
     connectWin = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     g_signal_connect(G_OBJECT(connectWin), "delete_event", G_CALLBACK(closepopup_cb), (gpointer)1);
