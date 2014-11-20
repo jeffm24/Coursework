@@ -50,5 +50,6 @@ void sendclick_cb(GtkWidget *w, gpointer data)
       
       free(buff);
     }
+    gtk_entry_buffer_delete_text(gldata.msgEnt, 0, gtk_entry_buffer_get_length(gldata.msgEnt));
   }
 }

@@ -58,6 +58,7 @@ int main(int argc, char **argv)
   gtk_widget_show(label);
   
   text = gtk_entry_new();
+  g_signal_connect(G_OBJECT(text), "activate", G_CALLBACK(sendclick_cb), NULL);
   gtk_table_attach_defaults((GtkTable*)mainTab, text, 0, 4, 1, 2);
   gldata.msgEnt = gtk_entry_get_buffer((GtkEntry*)text);
   gtk_widget_show(text);
