@@ -26,6 +26,23 @@ void child_bye();
 #include <netdb.h>
 #include <gtk/gtk.h>
 
+typedef struct s_data {
+  gulong cid;
+  gpointer cinst;
+  gulong sid;
+  gpointer sinst;
+  gulong qid;
+  gpointer qinst;
+
+  GtkEntryBuffer *servEnt;
+  GtkEntryBuffer *portEnt;
+  GtkEntryBuffer *userEnt;
+  GtkEntryBuffer *msgEnt;
+
+  char connected;
+} t_data;
+
+t_data gldata;
 int sfd;
 
 //Callback function for the client recieving a SIGINT OR SIGALRM from the server
@@ -37,6 +54,9 @@ void destroy_cb(GtkWidget*, gpointer);
 //Callback for destroying a popup window
 gint closepopup_cb(GtkWidget*, gpointer);
 
+//disconnects the client from the server
+void disconnect();
+
 /*
  *----------------------------------------------------------
  * GTK CALLBACK FUNCTIONS FOR THE MAIN CLIENT WINDOW:
@@ -47,7 +67,7 @@ gint closepopup_cb(GtkWidget*, gpointer);
 gint delete_cb(GtkWidget*, gpointer);
 
 //Handles when the "Send" button is clicked
-gint sendclick_cb(GtkWidget*, gpointer);
+void sendclick_cb(GtkWidget*, gpointer);
 
 //Handles when the "Connect" button is clicked
 void connectclick_cb(GtkWidget*, gpointer);

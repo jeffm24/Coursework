@@ -3,7 +3,7 @@ NAME_S = server
 NAME_C = client
 SRC_S = server.c
 SRC_C = client.c destroy_cb.c delete_cb.c sendclick_cb.c connectclick_cb.c quitclick_cb.c \
-	closepopup_cb.c okconnect_cb.c
+	closepopup_cb.c okconnect_cb.c disconnect.c
 OBJS = $(SRC_S:.c=.o)
 OBJC = $(SRC_C:.c=.o)
 RM = rm -fv
