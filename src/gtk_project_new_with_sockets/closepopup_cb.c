@@ -8,21 +8,21 @@
  */
 gint closepopup_cb(GtkWidget *w, gpointer data)
 {
-  GtkWidget *toplvl;
-  GtkToggleButton *button = (GtkToggleButton*)data;
-
   if (w != NULL) {
-    if (my_strcmp("Connect", (char*)gtk_button_get_label((GtkButton*)button)) == 0) {
-      gtk_toggle_button_set_active(button, FALSE);
+    
+    //check if the closepopup callback came from the Connect window
+    if (data == (gpointer)1) {  
+      gtk_toggle_button_set_active((GtkToggleButton*)gldata.cinst, FALSE);
       g_signal_handler_unblock(gldata.cinst, gldata.cid);
     } 
         
+    //make all buttons active again
     gtk_widget_set_sensitive((GtkWidget*)gldata.cinst, TRUE);
     gtk_widget_set_sensitive((GtkWidget*)gldata.sinst, TRUE);
     gtk_widget_set_sensitive((GtkWidget*)gldata.qinst, TRUE);
     
-    toplvl = gtk_widget_get_toplevel(w);
-    gtk_widget_destroy(toplvl);
+    //destroy toplevel window
+    gtk_widget_destroy(gtk_widget_get_toplevel(w));
   }
   return TRUE;
 }

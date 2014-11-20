@@ -20,8 +20,8 @@ void quitclick_cb(GtkWidget *w, gpointer data)
   gtk_widget_set_sensitive((GtkWidget*)gldata.sinst, FALSE);
 
   quitWin = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-  g_signal_connect(G_OBJECT(quitWin), "delete_event", G_CALLBACK(closepopup_cb), (gpointer)w);
-  g_signal_connect(G_OBJECT(quitWin), "destroy", G_CALLBACK(closepopup_cb), (gpointer)w);
+  g_signal_connect(G_OBJECT(quitWin), "delete_event", G_CALLBACK(closepopup_cb), (gpointer)0);
+  g_signal_connect(G_OBJECT(quitWin), "destroy", G_CALLBACK(closepopup_cb), (gpointer)0);
   gtk_container_set_border_width(GTK_CONTAINER(quitWin), 10);
   gtk_window_set_title(GTK_WINDOW(quitWin), "Quit");
 
@@ -40,7 +40,7 @@ void quitclick_cb(GtkWidget *w, gpointer data)
   gtk_widget_show(yes_btn);
 
   no_btn = gtk_button_new_with_label("No");
-  g_signal_connect(G_OBJECT(no_btn), "clicked", G_CALLBACK(closepopup_cb), (gpointer)w);
+  g_signal_connect(G_OBJECT(no_btn), "clicked", G_CALLBACK(closepopup_cb), (gpointer)0);
   gtk_table_attach_defaults((GtkTable*)mainTab, no_btn, 1, 2, 1, 2);
   gtk_widget_show(no_btn);
 

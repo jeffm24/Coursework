@@ -26,8 +26,8 @@ void connectclick_cb(GtkWidget *w, gpointer data)
     g_signal_handler_block(gldata.cinst, gldata.cid);
 
     connectWin = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    g_signal_connect(G_OBJECT(connectWin), "delete_event", G_CALLBACK(closepopup_cb), (gpointer)w);
-    g_signal_connect(G_OBJECT(connectWin), "destroy", G_CALLBACK(closepopup_cb), (gpointer)w);
+    g_signal_connect(G_OBJECT(connectWin), "delete_event", G_CALLBACK(closepopup_cb), (gpointer)1);
+    g_signal_connect(G_OBJECT(connectWin), "destroy", G_CALLBACK(closepopup_cb), (gpointer)1);
     gtk_container_set_border_width(GTK_CONTAINER(connectWin), 10);
     gtk_window_set_title(GTK_WINDOW(connectWin), "Connect");
 
@@ -69,7 +69,7 @@ void connectclick_cb(GtkWidget *w, gpointer data)
     gtk_widget_show(ok_btn);
 
     cancel_btn = gtk_button_new_with_label("Cancel");
-    g_signal_connect(G_OBJECT(cancel_btn), "clicked", G_CALLBACK(closepopup_cb), (gpointer)w);
+    g_signal_connect(G_OBJECT(cancel_btn), "clicked", G_CALLBACK(closepopup_cb), (gpointer)1);
     gtk_table_attach_defaults((GtkTable*)mainTab, cancel_btn, 2, 4, 3, 4);
     gtk_widget_show(cancel_btn);
 

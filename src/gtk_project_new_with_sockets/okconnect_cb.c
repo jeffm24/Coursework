@@ -26,13 +26,13 @@ void okconnect_cb(GtkWidget *w, gpointer data)
     
     //setup socket
     if ((sfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
-      my_str("\nERROR: Unable to open socket.\n\n");
+      my_str("\nERROR: Unable to open socket.\n");
       exit(1);
     }
 
     //get server
     if ((server = gethostbyname(servtxt)) == NULL) {
-      my_str("\nERROR: Could not find server. Please try entering again.\n\n");
+      my_str("\nERROR: Could not find server. Please try entering again.\n");
       close(sfd);
       err = 1;
     }
@@ -40,7 +40,7 @@ void okconnect_cb(GtkWidget *w, gpointer data)
     //get port
     port = my_atoi(porttxt);
     if (err != 1 && (port < 0 || port > 65535)) {
-      my_str("\nERROR: Invalid Port. Please use a port from 0-65535\n\n");
+      my_str("\nERROR: Invalid Port. Please use a port from 0-65535\n");
       close(sfd);
       err = 1;
     }
@@ -55,7 +55,7 @@ void okconnect_cb(GtkWidget *w, gpointer data)
 
     //connect to server
     if (err != 1 && connect(sfd, (struct sockaddr*)&serv_addr, (socklen_t)sizeof(serv_addr)) < 0) {
-      my_str("\nERROR: Unable to connect to server.\n\n");
+      my_str("\nERROR: Unable to connect to server.\n");
       close(sfd);
       err = 1;
     }
@@ -64,7 +64,7 @@ void okconnect_cb(GtkWidget *w, gpointer data)
     if (err != 1) {
       usrtxt = my_strconcat("/nick ", usrtxt);
       if ((n = write(sfd, usrtxt, my_strlen(usrtxt) + 1)) < 0) {
-	my_str("\nERROR: Unable to write to server.\n\n");
+	my_str("\nERROR: Unable to write to server.\n");
 	close(sfd);
 	exit(1);
       }
