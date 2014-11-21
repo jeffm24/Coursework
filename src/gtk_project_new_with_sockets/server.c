@@ -32,8 +32,8 @@ int main(int argc, char** argv)
   if (argv != NULL && *argv != NULL && argc >= 2) {
     //get port 
     port = my_atoi(argv[1]);
-    if (port < 1 || port > 64000) {
-      my_str("\nERROR: Invalid Port. Please use:\n\t./server [port from 0-64000]\n\n");
+    if (port < 0 || port > 65535) {
+      my_str("\nERROR: Invalid Port. Please use:\n\t./server [port from 0-65535]\n\n");
       exit(1);
     }
 

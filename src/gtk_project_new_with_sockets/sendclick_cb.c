@@ -12,7 +12,7 @@ void sendclick_cb(GtkWidget *w, gpointer data)
   char *msgtxt, *buff;
   char **v;
   int n;
-
+  
   msgtxt = (char*)gtk_entry_buffer_get_text(gldata.msgEnt);
   if (gldata.connected == 1 && my_strlen(msgtxt) != 0) {
     
@@ -40,10 +40,7 @@ void sendclick_cb(GtkWidget *w, gpointer data)
       buff = xmalloc(256 * sizeof(char));
       
       //check for server acknowledgement
-      alarm(5);
-      if ((n = read(sfd, buff, 2)) > 0) {
-	alarm(0);
-      } else {
+      if ((n = read(sfd, buff, 2)) <= 0) {
 	my_str("\nERROR: Did not recieve acknowledgement from server.\n");
 	disconnect();
       }

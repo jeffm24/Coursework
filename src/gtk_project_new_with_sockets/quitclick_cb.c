@@ -20,10 +20,12 @@ void quitclick_cb(GtkWidget *w, gpointer data)
   gtk_widget_set_sensitive((GtkWidget*)gldata.sinst, FALSE);
 
   quitWin = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+  gtk_window_set_resizable((GtkWindow*)quitWin, FALSE);
+  gtk_window_set_icon_from_file((GtkWindow*)quitWin, "icon.png", NULL);
   g_signal_connect(G_OBJECT(quitWin), "delete_event", G_CALLBACK(closepopup_cb), (gpointer)0);
   g_signal_connect(G_OBJECT(quitWin), "destroy", G_CALLBACK(closepopup_cb), (gpointer)0);
   gtk_container_set_border_width(GTK_CONTAINER(quitWin), 10);
-  gtk_window_set_title(GTK_WINDOW(quitWin), "Quit");
+  gtk_window_set_title(GTK_WINDOW(quitWin), "Wow.");
 
   mainTab = gtk_table_new(2, 2, FALSE);
   gtk_container_add(GTK_CONTAINER(quitWin), mainTab);

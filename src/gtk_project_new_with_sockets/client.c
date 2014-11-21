@@ -14,8 +14,6 @@ void client_bye(int sig)
 
   if (sig == SIGINT) {
     my_str("\nReceived Interrupt. Now Exiting.\n\n");
-  } else if (sig == SIGALRM) {
-    my_str("\nERROR: Did not receive acknowledgement from server.\n\n");
   }
 
   if ((m = write(sfd, "/exit", 6) < 0)) {
@@ -37,16 +35,16 @@ int main(int argc, char **argv)
   GtkWidget *send_btn, *cnct_btn, *quit_btn;
 
   signal(SIGINT, client_bye);
-  signal(SIGALRM, client_bye);
   gldata.connected = 0;
 
   gtk_init(&argc, &argv);
   
   win = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+  gtk_window_set_resizable((GtkWindow*)win, FALSE);
   g_signal_connect(G_OBJECT(win), "delete_event", G_CALLBACK(delete_cb), NULL);
   g_signal_connect(G_OBJECT(win), "destroy", G_CALLBACK(destroy_cb), NULL);
   gtk_container_set_border_width(GTK_CONTAINER(win), 10);
-  gtk_window_set_title(GTK_WINDOW(win), "Simple Chat Client");
+  gtk_window_set_title(GTK_WINDOW(win), "#Basic Chat");
 
   mainTab = gtk_table_new(3, 6, FALSE);
   gtk_container_add(GTK_CONTAINER(win), mainTab);

@@ -25,6 +25,7 @@ void connectclick_cb(GtkWidget *w, gpointer data)
     gtk_widget_set_sensitive((GtkWidget*)gldata.sinst, FALSE);
 
     connectWin = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_resizable((GtkWindow*)connectWin, FALSE);
     g_signal_connect(G_OBJECT(connectWin), "delete_event", G_CALLBACK(closepopup_cb), (gpointer)1);
     g_signal_connect(G_OBJECT(connectWin), "destroy", G_CALLBACK(closepopup_cb), (gpointer)1);
     gtk_container_set_border_width(GTK_CONTAINER(connectWin), 10);
